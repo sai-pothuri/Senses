@@ -16,9 +16,9 @@
 	<h1>Recognise speech</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="file" id="avatar" name="avatar" accept="audio/*">
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    <form action="{{ url_for('speech_recognition')}}"method="post">
+    	<!-- <input type="file" id="avatar" name="avatar" accept="audio/*"> -->
+        <button type="submit" class="btn btn-primary btn-block btn-large">Speech</button>
     </form>
 
    <br>
