@@ -49,7 +49,9 @@ def speech_recognition_predict():
     f.save(file_path)
 
     text = speech_api(file_path)
-    return render_template('test.html', prediction_text=text)
+    if text==False:
+        return render_template('final.html', prediction_text="Please reupload the file")
+    return render_template('final.html', prediction_text=text)
 
 @app.route('/htr_recognition',methods=['POST'])
 def htr_recognition():
@@ -69,7 +71,7 @@ def htr_recognition_predict():
     f.save(file_path)
 
     text = htr_api(file_path)
-    return render_template('test.html', prediction_text=text)
+    return render_template('final.html', prediction_text=text)
 
 
 

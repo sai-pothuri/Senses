@@ -7,8 +7,10 @@ def speech_api(file_name):
     with open("blackhole.log") as f:
         text=f.readline()
     # print(text)
+    if text[0]=='{':
+        return False
     return text
-# speech_api("sample-0.wav")
+# speech_api("sample-0.mp3")
 
 def htr_api(file_name):
     cmd = "FILE_NAME=" + file_name + " bash htr_api.sh > blackhole.log"
