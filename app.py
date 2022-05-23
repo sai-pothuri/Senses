@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, jsonify, render_template
 import pickle
 from werkzeug.utils import secure_filename
-from speech_recognition import speech_api
+from speech_recognition import speech_api, htr_api
 
 app = Flask(__name__)
 # model = pickle.load(open('model_end.pickle', 'rb'))
@@ -39,10 +39,6 @@ def speech_recognition():
 
     return render_template('speech.html')
 
-def speech():
-
-    return render_template('test.html')
-
 @app.route('/speech_recognition_predict',methods=['POST'])
 def speech_recognition_predict():
     f = request.files['file']
@@ -53,6 +49,26 @@ def speech_recognition_predict():
     f.save(file_path)
 
     text = speech_api(file_path)
+    return render_template('test.html', prediction_text=text)
+
+@app.route('/htr_recognition',methods=['POST'])
+def htr_recognition():
+    '''
+    For rendering results on HTML GUI
+    '''
+
+    return render_template('htr.html')
+
+@app.route('/htr_recognition_predict',methods=['POST'])
+def htr_recognition_predict():
+    f = request.files['file']
+    # Save the file to ./uploads
+    basepath = os.path.dirname(__file__)
+    file_path = os.path.join(
+        basepath, 'uploads', secure_filename(f.filename))
+    f.save(file_path)
+
+    text = htr_api(file_path)
     return render_template('test.html', prediction_text=text)
 
 

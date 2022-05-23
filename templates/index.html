@@ -20,7 +20,11 @@
     	<!-- <input type="file" id="avatar" name="avatar" accept="audio/*"> -->
         <button type="submit" class="btn btn-primary btn-block btn-large">Speech</button>
     </form>
-
+    <form action="{{ url_for('htr_recognition')}}"method="post">
+    	<!-- <input type="file" id="avatar" name="avatar" accept="audio/*"> -->
+        <button type="submit" class="btn btn-primary btn-block btn-large">Handwritten Text</button>
+    </form>
+    
    <br>
    <br>
    {{ prediction_text }}

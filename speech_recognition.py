@@ -9,3 +9,11 @@ def speech_api(file_name):
     # print(text)
     return text
 # speech_api("sample-0.wav")
+
+def htr_api(file_name):
+    cmd = "FILE_NAME=" + file_name + " bash htr_api.sh > blackhole.log"
+    os.system(cmd)
+    with open("blackhole.log") as f:
+        text=f.readline()
+        # print(text)
+    return text
