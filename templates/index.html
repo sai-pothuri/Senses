@@ -3,28 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Speech Recognition</title>
-  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-   -->
+<link rel="stylesheet" href="static/index.css">
+  
 </head>
 
 <body>
  <div class="login">
-	<h1>Recognise speech</h1>
+  <ul>
+    <li><a class="active" href="http://127.0.0.1:5000/">Home</a></li>
+    <li ><a href="http://127.0.0.1:5000/speech_recognition">Speech</a></li>
+    <li><a href="http://127.0.0.1:5000/htr_recognition">HTR</a></li>
+    <li><a href="http://127.0.0.1:5000/htr_recognition">Sign Language</a></li>
+  </ul>
+	<h1>SENSES</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('speech_recognition')}}"method="post">
     	<!-- <input type="file" id="avatar" name="avatar" accept="audio/*"> -->
-        <button type="submit" class="btn btn-primary btn-block btn-large">Speech</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Speech to Text Translation</button>
     </form>
     <form action="{{ url_for('htr_recognition')}}"method="post">
     	<!-- <input type="file" id="avatar" name="avatar" accept="audio/*"> -->
-        <button type="submit" class="btn btn-primary btn-block btn-large">Handwritten Text</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Handwritten Text Recognition</button>
     </form>
-    
+    <form action="{{ url_for('speech_recognition')}}"method="post">
+    	<!-- <input type="file" id="avatar" name="avatar" accept="audio/*"> -->
+        <button type="submit" class="btn btn-primary btn-block btn-large">Sign Language Recognition</button>
+    </form>
    <br>
    <br>
    {{ prediction_text }}

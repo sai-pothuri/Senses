@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, jsonify, render_template
 import pickle
 from werkzeug.utils import secure_filename
-from speech_recognition import speech_api, htr_api
+from temp import speech_api, htr_api
 
 app = Flask(__name__)
 # model = pickle.load(open('model_end.pickle', 'rb'))
